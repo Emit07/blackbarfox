@@ -1,0 +1,141 @@
+/*@import url('file:///home/matheus/.cache/homepage/colors.css');
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");*/
+ 
+:root {
+    --bg-dark: #282828;
+    --url-background: #282828; 
+    --url-foreground: #ebdbb2;
+    --url-fonts: "Lemon"; 
+    --url-font-size: 9pt;
+    --url-text-align: center;
+	
+	--tab-surface-regular: var(--theme-colors-tab,
+                             var(--theme-colors-frame_inactive));
+	--tab-surface-active: var(--theme-colors-tab_selected,
+                            var(--theme-colors-toolbar,
+                                var(--browser-bg-for-header-image,
+                                    var(--tab-like-surface))));
+	--tab-surface-active-hover: var(--theme-colors-tab_selected,
+                                  var(--theme-colors-toolbar,
+                                      var(--browser-bg-for-header-image,
+                                          var(--tab-like-surface))));
+	--tab-surface-hover: rgba(255,255,255,.1) /* from https://searchfox.org/mozilla-central/rev/8d722de75886d6bffc116772a1db8854e34ee6a7/browser/themes/shared/tabs.inc.css#590 */;
+	--tab-border: var(--theme-colors-tab_background_separator,
+                    var(--theme-colors-tab_line,
+                        var(--theme-colors-tab_background_text-30,
+                            hsl(240,9%,32%) /* from https://searchfox.org/mozilla-central/rev/8d722de75886d6bffc116772a1db8854e34ee6a7/browser/themes/shared/tabs.inc.css#684 : --tab-text-regular * 0.3 opacity */)));
+	--tab-text-regular: var(--theme-colors-tab_background_text,
+                          hsl(240,9%,98%) /* from https://searchfox.org/mozilla-central/rev/8d722de75886d6bffc116772a1db8854e34ee6a7/toolkit/themes/windows/global/tabbox.css#27 */);
+	--tab-text-active: var(--theme-colors-tab_text,
+                         var(--theme-colors-toolbar_text,
+                             -moz-DialogText /* from https://searchfox.org/mozilla-central/rev/8d722de75886d6bffc116772a1db8854e34ee6a7/toolkit/themes/windows/global/tabbox.css#27 */));
+	--tabbar-bg: var(--theme-colors-frame,
+                   hsl(235,33%,19%) /* from https://searchfox.org/mozilla-central/rev/8d722de75886d6bffc116772a1db8854e34ee6a7/browser/themes/windows/browser-aero.css#59 */);
+}
+
+:root.sidebar .contextual-identity-marker {
+  margin: 0 !important;
+  position: absolute !important;
+  pointer-events: none;Full Auto-show/hide Theme
+  z-index: 0;
+  
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: 0 !important;
+  
+  width: unset !important;
+  height: unset !important;  
+    
+  opacity: 0.5;
+}
+:root.sidebar tab-label {
+  z-index: 1000;
+}
+
+/* Hide shiled button (protections) */
+#tracking-protection-icon-container {
+	display: none;
+}
+
+/* Hide star button (bookmark) */
+#star-button{
+	display:none;
+}
+
+/** Hides Tabs **/ 
+#TabsToolbar {
+  visibility: collapse;
+}
+
+/* Hide some url buttons (forward, back, panel-ui-menu) */
+#forward-button, #back-button, #PanelUI-menu-button, #PanelUI-button, .restore-tabs-button {
+    display: none !important;
+}
+ 
+/*********************************/
+/**** MENU BAR CONFIG ****/
+/*********************************/
+#navigator-toolbox, #main-window[sizemode="normal"] #navigator-toolbox, #main-window[sizemode="maximized"] #navigator-toolbox {
+    border-top: 0px !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
+    border-bottom: 0px !important;
+    box-shadow: none !important;
+	padding:0;
+}
+ 
+/*********************************/
+/**** URL BAR CONFIG ****/
+/*********************************/
+#urlbar>#urlbar-background, .searchbar-textbox, urlbar-container {
+    background-color: var(--url-background) !important;
+    color: var(--url-foreground) !important;
+    font-family: var(--url-fonts) !important;
+    font-size: var(--url-font-size); 
+    text-shadow: none !important; 
+    text-align: left !important;
+    border-radius: 0px !important;
+    border: 0 !important;
+	background-color: !important;
+    box-shadow: 0 0 0 rgb(255, 255, 255) !important;
+	padding:0;
+	margin:0;
+}
+
+#urlbar:not([focused="true"])>#urlbar-background,
+#urlbar>#urlbar-input-container {
+    border-radius: 0px !important;
+}
+
+#urlbar[focused="true"]>#urlbar-background {
+	background-color: #3c3836 !important;
+}
+
+#nav-bar[id], #PersonalToolbar[id], #web-developer-toolbar[id], #navigator-toolbox[tabsontop="true"] > #nav-bar[id], #navigator-toolbox[tabsontop="true"]:not([customizing]) > #nav-bar[collapsed="true"][id] + toolbar, #navigator-toolbox[tabsontop="true"]:not([customizing]) > #nav-bar[collapsed="true"] + #customToolbars + #PersonalToolbar[id], #navigator-toolbox[tabsontop="false"] > #nav-bar[id], #navigator-toolbox[tabsontop="false"]:not([customizing]) > #nav-bar[collapsed="true"][id] + toolbar, #navigator-toolbox[tabsontop="false"]:not([customizing]) > #nav-bar[collapsed="true"] + #customToolbars + #PersonalToolbar[id] {
+    background-image: none !important;
+    background: var(--url-background) !important;
+    background-color: var(--url-background) !important;
+    margin-top: 0px !important;
+    border-top: 0px !important;
+    border-bottom: 0px !important;
+}
+ 
+/*********************************/
+/**** OTHER CONFIGS ****/
+/*********************************/
+window:not([chromehidden~="toolbar"]) #urlbar-container > .toolbarbutton-1:-moz-any([disabled], :not([open]):not([disabled]):not(:active)) > .toolbarbutton-icon[class], #main-window:not([customizing]) #back-button[disabled] > .toolbarbutton-icon[class] {
+    background-image: none !important;
+    background-color: var(--url-background) !important;
+    box-shadow: 0px !important;
+    border: 0px !important;
+}
+ 
+browser[type="content-primary"], browser[type="content"] {
+    background: var(--bg-dark) !important;
+}
+ 
+browser, browser.display.background_color, tabbrowser tabpanels {
+    background-color: var(--bg-dark) !important;
+}
+
